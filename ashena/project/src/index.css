@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    direction: rtl;
+  }
+
+  body {
+    color: #1a1916;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(255, 138, 76, 0.14), transparent 30%),
+      radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.08), transparent 28%),
+      #fcfaf6;
+    min-width: 320px;
+    margin: 0;
+    font-family: Vazirmatn, Inter, system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    color: #1a1916;
+    background: rgba(232, 70, 10, 0.16);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.45);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white rounded-2xl
+           bg-gradient-to-br from-brand-light to-brand transition-all duration-200
+           shadow-brand hover:shadow-[0_14px_32px_rgba(232,70,10,0.28)]
+           hover:-translate-y-px active:translate-y-0
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-y-0;
+    min-height: 48px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-slate-700 rounded-2xl
+           bg-white/80 border border-slate-200/60 transition-all duration-200
+           shadow-card hover:bg-white hover:border-brand/30 hover:text-slate-900
+           disabled:opacity-40 disabled:cursor-not-allowed;
+    min-height: 48px;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-600
+           rounded-xl transition-all duration-150 hover:bg-white/70 hover:text-slate-900;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl shadow-card;
+  }
+
+  .card-hover {
+    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl shadow-card
+           cursor-pointer transition-all duration-200
+           hover:border-brand/30 hover:-translate-y-1 hover:shadow-card-hover;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 text-sm text-slate-900 bg-white/90 border border-slate-200/80 rounded-2xl
+           transition-all duration-150 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)]
+           placeholder:text-slate-400
+           focus:outline-none focus:border-brand/40 focus:ring-4 focus:ring-brand/10;
+    min-height: 48px;
+  }
+
+  .label {
+    @apply block mb-1.5 text-xs font-semibold text-slate-500;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium leading-4 rounded-full;
+  }
+
+  .badge-country {
+    @apply badge text-amber-800 bg-orange-50 border border-orange-200;
+  }
+
+  .badge-visa {
+    @apply badge text-blue-700 bg-blue-50 border border-blue-200;
+  }
+
+  .badge-verified {
+    @apply badge text-verified-text bg-verified-bg border border-verified-border;
+  }
+
+  .badge-brand {
+    @apply badge text-brand-dark bg-brand/10 border border-brand/20;
+  }
+
+  .section-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-brand/80;
+  }
+
+  .legal-note {
+    @apply flex items-start gap-2 px-3 py-2.5 text-xs leading-6 text-amber-800/80
+           bg-amber-50 border border-amber-100 rounded-2xl;
+  }
+
+  .text-2xs {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rtl-flip {
+    transform: scaleX(-1);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @keyframes drift {
+    0% { transform: translateX(105vw); }
+    100% { transform: translateX(-120%); }
+  }
+  .flight-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: drift 32s linear infinite;
+    will-change: transform;
+  }
+}
